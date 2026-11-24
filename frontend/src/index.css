@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply bg-forge-bg text-forge-text antialiased;
+    scrollbar-color: #2A2A3D #0A0A0F;
+    scrollbar-width: thin;
+  }
+
+  body {
+    @apply bg-forge-bg min-h-screen;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-forge-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-forge-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-forge-muted;
+  }
+}
+
+@layer components {
+  .forge-card {
+    @apply bg-forge-surface border border-forge-border rounded-xl shadow-card;
+  }
+
+  .forge-btn-primary {
+    @apply bg-forge-accent hover:bg-forge-accent-light text-white font-semibold px-5 py-2.5 rounded-lg
+           transition-all duration-200 shadow-forge-sm hover:shadow-forge active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .forge-btn-secondary {
+    @apply bg-forge-elevated hover:bg-forge-border text-forge-text font-medium px-5 py-2.5 rounded-lg
+           border border-forge-border transition-all duration-200 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .forge-input {
+    @apply bg-forge-elevated border border-forge-border text-forge-text placeholder-forge-muted
+           rounded-lg px-4 py-3 outline-none transition-all duration-200
+           focus:border-forge-accent focus:ring-1 focus:ring-forge-accent/30
+           hover:border-forge-muted;
+  }
+
+  .forge-label {
+    @apply text-forge-subtle text-sm font-medium mb-1.5 block;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-forge-gradient bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #7C3AED, #06B6D4);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
